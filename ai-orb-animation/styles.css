@@ -1,0 +1,471 @@
+/* Basic reset and global styles */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F9F9F9;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Layout for orbs container */
+.orbs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    padding: 20px;
+}
+
+.orb-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orb-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+/* Wrapper style */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* Main container styling */
+.container {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px 0px rgba(156, 131, 248, 0.24), 
+                0px 12px 20px 0px rgba(205, 47, 253, 0.10), 
+                0px 24px 32px 0px rgba(253, 98, 251, 0.12);
+}
+
+/* Background gradient */
+.background {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(119.32% 119.32% at 36.88% 82.92%, #700AFF 16.1%, #FD2FFD 62.76%, #F49FFD 75.63%);
+    z-index: 0;
+    transform: scale(1.2);
+    filter: blur(15px);
+}
+
+/* Orbit base style */
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+
+/* Deep blue dot */
+.deep-blue-dot {
+    animation: orbit-counter 16s linear infinite;
+    z-index: 10;
+}
+
+.deep-blue-dot-svg {
+    position: absolute;
+    top: -128px;
+    left: -48px;
+    transform: rotate(-30deg);
+}
+
+/* Animation for rim light 1 */
+.animated-rim-1 {
+    animation: orb-spin 16s linear infinite, orb-fade 8s linear infinite;
+    z-index: 20;
+    will-change: transform, opacity;
+}
+
+.rim-light-svg {
+    position: absolute;
+    top: -128px;
+    left: -128px;
+    transform: scale(1);
+}
+
+/* Cyan shape */
+.cyan-shape {
+    animation: orbit-clockwise 12s linear infinite;
+    z-index: 30;
+}
+
+.cyan-shape-svg {
+    position: absolute;
+    top: -160px;
+    left: -180px;
+}
+
+/* Static rim light 1 */
+.static-rim-1 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 40;
+    transform: scale(1);
+}
+
+/* Static rim light 2 */
+.static-rim-2 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 256px;
+    height: 256px;
+    z-index: 50;
+    background: radial-gradient(80.08% 80.08% at 35.83% 67.08%, rgba(255, 255, 255, 0.00) 64.58%, rgba(255, 255, 255, 0.80) 89.89%, rgba(255, 255, 255, 0.00) 100%);
+    pointer-events: none;
+}
+
+/* Animation for rim light 2 */
+.animated-rim-2 {
+    animation: orb-spin-counter 18s linear infinite, orb-fade 9s linear infinite;
+    z-index: 60;
+    will-change: transform, opacity;
+}
+
+.rim-light-2-svg {
+    position: absolute;
+    top: -128px;
+    left: -128px;
+}
+
+/* Animation for rim light 3 */
+.animated-rim-3 {
+    animation: pendulum-swing 12s ease-in-out infinite, orb-fade 10s linear infinite;
+    z-index: 70;
+    will-change: transform, opacity;
+}
+
+.rim-light-3-svg {
+    position: absolute;
+    top: -128px;
+    left: -128px;
+    transform: scale(1.5);
+}
+
+/* Animation for rim light 4 */
+.animated-rim-4 {
+    animation: limited-spin 10s ease-in-out infinite;
+    z-index: 95;
+    mix-blend-mode: color-dodge;
+    transform: scale(0.95);
+}
+
+.rim-light-4-svg {
+    position: absolute;
+    top: -128px;
+    left: -128px;
+}
+
+/* Animation for rim light 5 */
+.animated-rim-5 {
+    animation: orb-spin-counter 12s linear infinite, rim-fade-5 5s linear infinite;
+    z-index: 100;
+    mix-blend-mode: color-dodge;
+    will-change: transform, opacity;
+}
+
+.rim-light-5-svg {
+    position: absolute;
+    top: -128px;
+    left: -128px;
+}
+
+/* Shooting stars */
+.shooting-star {
+    position: absolute;
+    z-index: 80;
+    filter: blur(1px);
+    will-change: transform, opacity;
+}
+
+.shooting-star-1 {
+    animation: shooting-star-move-1 3s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+    animation-delay: -1s;
+    offset-path: path("M1 48.4309C46 -31.0691 234 -6.0693 251.5 89.4309");
+    offset-rotate: auto;
+    top: 24px;
+}
+
+.shooting-star-2 {
+    animation: shooting-star-move-2 4.5s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+    animation-delay: 0.5s;
+    offset-path: path("M153.952 13.0005C88.9519 -32.5 1.45189 60.4758 1.45188 160.5C1.45188 219.5 30.9519 248 66.1761 252.126");
+    offset-rotate: auto;
+    left: 35px;
+    transform: scaleY(-1);
+    z-index: 85;
+}
+
+.shooting-star-3 {
+    animation: shooting-star-move-3 5s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+    animation-delay: 1.5s;
+    offset-path: path("M261 0C261 39.2122 202.797 71 131 71C59.203 71 1 39.2122 1 0");
+    offset-rotate: auto;
+    filter: blur(2px);
+    top: 128px;
+    z-index: 90;
+}
+
+/* Noise Layer */
+.noise-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 256px;
+    height: 256px;
+    z-index: 120;
+    opacity: 0.15;
+    mix-blend-mode: color-dodge;
+    background-image: url(images/noise-texture.png);
+    background-repeat: repeat;
+    background-size: 96px 96px;
+    mask-image: radial-gradient(58% 58% at 15.62% 90.23%, #000 46.32%, rgba(0, 0, 0, 0.00) 100%), 
+                radial-gradient(50.25% 28.28% at 73.83% 24.8%, #000 33.54%, rgba(0, 0, 0, 0.00) 100%);
+    mask-mode: alpha;
+    -webkit-mask-image: radial-gradient(58% 58% at 15.62% 90.23%, #000 46.32%, rgba(0, 0, 0, 0.00) 100%), 
+                         radial-gradient(50.25% 28.28% at 73.83% 24.8%, #000 33.54%, rgba(0, 0, 0, 0.00) 100%);
+    -webkit-mask-mode: alpha;
+    pointer-events: none;
+    border-radius: 9999px;
+}
+
+/* Inner Glow Layer */
+.inner-glow-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 256px;
+    height: 256px;
+    z-index: 110;
+    opacity: 0.4;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.00) 98%, #FFF 100%);
+    pointer-events: none;
+    border-radius: 9999px;
+}
+
+/* Particle styles - will be added via JavaScript */
+.particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    filter: blur(1.5px);
+    will-change: opacity, transform;
+}
+
+/* Static element styling */
+.static-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%, -50%);
+}
+
+.deep-blue-dot-static {
+    z-index: 10;
+}
+
+.deep-blue-dot-static .deep-blue-dot-svg {
+    position: absolute;
+    top: -128px;
+    left: -48px;
+    transform: rotate(-30deg);
+}
+
+.cyan-shape-static {
+    z-index: 30;
+}
+
+.cyan-shape-static .cyan-shape-svg {
+    position: absolute;
+    top: -160px;
+    left: -180px;
+}
+
+.rim-light-static {
+    z-index: 20;
+    opacity: 0.7;
+}
+
+.rim-light-static .rim-light-svg {
+    position: absolute;
+    top: -128px;
+    left: -128px;
+    transform: scale(1);
+}
+
+/* Static orbit and particle styling to match React StaticParticle */
+.static-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.static-particle {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    filter: blur(1.5px);
+}
+
+/* Animation keyframes */
+@keyframes orbit-clockwise {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbit-counter {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes orb-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1.05); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.05); }
+}
+
+@keyframes orb-fade {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+@keyframes orb-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+@keyframes orb-spin-counter {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(1.05); }
+    100% { transform: translate(-50%, -50%) rotate(-360deg) scale(1.05); }
+}
+
+@keyframes pendulum-swing {
+    0%, 100% { transform: translate(-50%, -50%) rotate(45deg); }
+    50% { transform: translate(-50%, -50%) rotate(-45deg); }
+}
+
+@keyframes limited-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg) scale(0.95); }
+    100% { transform: translate(-50%, -50%) rotate(360deg) scale(0.95); }
+}
+
+@keyframes rim-fade-5 {
+    0% { opacity: 1; }
+    25% { opacity: 0.6; }
+    50% { opacity: 0.2; }
+    75% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@keyframes particle-fade {
+    0% { opacity: var(--particle-max-opacity); }
+    50% { opacity: var(--particle-min-opacity); }
+    100% { opacity: var(--particle-max-opacity); }
+}
+
+@keyframes particle-rotate-variable-clockwise {
+    0% { transform: translate(-50%, -50%) rotate(var(--initial-rotation)); }
+    100% { transform: translate(-50%, -50%) rotate(calc(var(--initial-rotation) + 360deg)); }
+}
+
+@keyframes particle-rotate-variable-counter {
+    0% { transform: translate(-50%, -50%) rotate(var(--initial-rotation)); }
+    100% { transform: translate(-50%, -50%) rotate(calc(var(--initial-rotation) - 360deg)); }
+}
+
+@keyframes shooting-star-move-1 {
+    20% {
+        offset-distance: 0%;
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.8;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        offset-distance: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes shooting-star-move-2 {
+    0% {
+        offset-distance: 0%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0.8;
+    }
+    65% {
+        opacity: 0;
+    }
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes shooting-star-move-3 {
+    0% {
+        offset-distance: 0%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+/* Add a breathing effect to the whole orb */
+.orb-section:first-child .wrapper {
+    animation: orb-breathe 3s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Media query for larger screens - display orbs side by side */
+@media (min-width: 768px) {
+    .orbs-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+} 

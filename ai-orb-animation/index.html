@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Orb</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="orbs-container">
+        <!-- Animated Orb -->
+        <div class="orb-section">
+            <h2>Animated Orb</h2>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="background"></div>
+
+                    <!-- Fixed particles will be added by JavaScript -->
+                    
+                    <!-- deep blue dot -->
+                    <div class="orbit deep-blue-dot">
+                        <div class="deep-blue-dot-svg">
+                            <svg width="256" height="256" viewBox="0 0 335 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_5006_1420)">
+                                <path d="M291.243 68.1566C313.466 98.8045 300.677 207.465 273.093 175.243C224.944 118.996 131.707 68.3551 187.44 40.1148C224.896 21.1351 271.343 40.7115 291.243 68.1566Z" fill="url(#paint0_radial_5006_1420)"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5006_1420" x="138.219" y="0.565552" width="196.359" height="212.585" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="16" result="effect1_foregroundBlur_5006_1420"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5006_1420" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(234.087 55.1034) rotate(-71.3294) scale(92.9867 67.8525)">
+                                <stop offset="0.25" stop-color="#4314FF"/>
+                                <stop offset="1" stop-color="#F719FF" stop-opacity="0"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- rim light 1 -->
+                    <div class="orbit animated-rim-1">
+                        <div class="rim-light-svg">
+                            <svg width="256" height="256" viewBox="0 0 272 272" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_4996_1028)">
+                                    <circle cx="136" cy="136" r="128" fill="url(#paint0_radial_4996_1028)"/>
+                                </g>
+                                <defs>
+                                    <filter id="filter0_f_4996_1028" x="0" y="0" width="272" height="272" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                    <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur_4996_1028"/>
+                                    </filter>
+                                    <radialGradient id="paint0_radial_4996_1028" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(136 264) rotate(-90) scale(256)">
+                                    <stop offset="0.667005" stop-color="white" stop-opacity="0"/>
+                                    <stop offset="1" stop-color="white"/>
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- cyan shape -->
+                    <div class="orbit cyan-shape">
+                        <div class="cyan-shape-svg">
+                            <svg width="256" height="256" viewBox="0 0 314 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_5006_1451)">
+                                <path d="M86.8811 91.8471C120.938 49.8708 223.082 26.4012 241.283 77.305C251.633 106.253 176.136 64.836 167.933 113.565C159.729 162.293 155.351 245.862 86.5671 245.377C17.7828 244.892 56.383 129.437 86.8811 91.8471Z" fill="url(#paint0_radial_5006_1451)"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5006_1451" x="0.156738" y="0.342468" width="290.099" height="293.037" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="24" result="effect1_foregroundBlur_5006_1451"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5006_1451" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(141.405 147.174) rotate(105) scale(110.73 80.7998)">
+                                <stop offset="0.64" stop-color="#78A1FF"/>
+                                <stop offset="1" stop-color="#F719FF" stop-opacity="0.7"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+           
+                    <!-- static rim light 1 -->
+                    <div class="static-rim-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 240 240" fill="none">
+                            <circle cx="120" cy="120" r="120" fill="url(#paint0_radial_4996_1031)"/>
+                            <defs>
+                                <radialGradient id="paint0_radial_4996_1031" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(138 89.5) rotate(120.933) scale(161.466)">
+                                <stop offset="0.755904" stop-color="white" stop-opacity="0"/>
+                                <stop offset="1" stop-color="white"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <!-- static rim light 2 -->
+                    <div class="static-rim-2"></div>
+
+                    <!-- rim light 2 -->
+                    <div class="orbit animated-rim-2">
+                        <div class="rim-light-2-svg">
+                            <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g opacity="0.4">
+                                <rect width="256" height="256" fill="url(#paint0_radial_5022_1757)" fill-opacity="0.8"/>
+                                </g>
+                                <defs>
+                                <radialGradient id="paint0_radial_5022_1757" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(103.467 154.667) rotate(-45.2449) scale(176.495)">
+                                <stop offset="0.565" stop-color="white" stop-opacity="0"/>
+                                <stop offset="0.89888" stop-color="white"/>
+                                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- rim light 3 -->
+                    <div class="orbit animated-rim-3">
+                        <div class="rim-light-3-svg">
+                            <svg width="256" height="256" viewBox="0 0 337 308" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g opacity="0.6">
+                                <g filter="url(#filter0_f_5025_381)">
+                                <path d="M144.849 253.608C195.332 272.932 295.525 242.185 285.836 189.001C280.325 158.756 235.652 232.373 204.183 194.274C172.714 156.176 127.138 85.9921 67.812 120.804C8.48559 155.616 99.642 236.304 144.849 253.608Z" fill="url(#paint0_radial_5025_381)"/>
+                                </g>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5025_381" x="0.366638" y="63.392" width="334.124" height="244.026" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="24" result="effect1_foregroundBlur_5025_381"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5025_381" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(223.5 240) rotate(-132.64) scale(163.126 119.034)">
+                                <stop offset="0.64" stop-color="white"/>
+                                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- New animated rim layer - Removed fade animation -->
+                    <div class="orbit animated-rim-4">
+                        <div class="rim-light-4-svg">
+                            <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                <g opacity="0.6" filter="url(#filter0_f_5060_630)">
+                                <circle cx="128" cy="128" r="112" fill="url(#paint0_radial_5060_630)"/>
+                                </g>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5060_630" x="8" y="8" width="240" height="240" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur_5060_630"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5060_630" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(128 179.52) rotate(-135.026) scale(164.505 243.528)">
+                                <stop offset="0.537777" stop-color="#FF62E2" stop-opacity="0"/>
+                                <stop offset="0.834122" stop-color="#FF62E2"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- New animated rim layer (topmost) -->
+                    <div class="orbit animated-rim-5">
+                        <div class="rim-light-5-svg">
+                            <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_5060_644)">
+                                <path d="M154.499 32.5008C203.999 45.0005 237.765 114.042 198.999 94.4981C160.233 74.9542 94.7616 143.196 63.4999 94.4975C32.2381 45.7986 105 20.001 154.499 32.5008Z" fill="url(#paint0_radial_5060_644)"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5060_644" x="43.9482" y="17.3705" width="183.892" height="107.031" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="6" result="effect1_foregroundBlur_5060_644"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5060_644" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(217.001 56.4989) rotate(139.004) scale(70.8837 140.972)">
+                                <stop offset="0.300664" stop-color="#FFC5E3"/>
+                                <stop offset="1" stop-color="#FFC5E3" stop-opacity="0"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- shooting star paths -->
+                    <svg width="0" height="0" style="position: absolute;">
+                        <defs>
+                            <path 
+                                id="shooting-star-path-1"
+                                d="M1 48.4309C46 -31.0691 234 -6.0693 251.5 89.4309"
+                                stroke="transparent"
+                                fill="none" 
+                            />
+                            <path 
+                                id="shooting-star-path-2"
+                                d="M153.952 13.0005C88.9519 -32.5 1.45189 60.4758 1.45188 160.5C1.45188 219.5 30.9519 248 66.1761 252.126"
+                                stroke="transparent" 
+                                fill="none" 
+                            />
+                            <path 
+                                id="shooting-star-path-3"
+                                d="M261 0C261 39.2122 202.797 71 131 71C59.203 71 1 39.2122 1 0"
+                                stroke="transparent" 
+                                fill="none" 
+                            />
+                        </defs>
+                    </svg>
+
+                    <!-- shooting star 1 -->
+                    <div class="shooting-star shooting-star-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="10" viewBox="0 0 40 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M39.6415 1.46109C39.6216 2.01302 39.158 2.44392 38.6059 2.42819C25.07 2.04229 11.6727 3.74936 0.0416565 9.68023C12.0184 3.57309 24.8952 0.117241 38.6773 0.4323C39.2295 0.444922 39.6614 0.909167 39.6415 1.46109Z" fill="white"/>
+                            <path d="M40 1.5C40 2.32843 39.3284 3 38.5 3C37.6716 3 37 2.32843 37 1.5C37 0.671573 37.6716 0 38.5 0C39.3284 0 40 0.671573 40 1.5Z" fill="white"/>
+                        </svg>
+                    </div>
+
+                    <!-- shooting star 2 -->
+                    <div class="shooting-star shooting-star-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="10" viewBox="0 0 64 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M63.9989 1.13147C63.9668 1.727 63.2175 2.19195 62.3253 2.17498C40.4493 1.75859 18.7974 3.60053 0 10C19.3561 3.41033 40.1668 -0.318561 62.4407 0.0213911C63.3331 0.0350104 64.0311 0.535935 63.9989 1.13147Z" fill="white"/>
+                        </svg>
+                    </div>
+
+                    <!-- shooting star 3 -->
+                    <div class="shooting-star shooting-star-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="10" viewBox="0 0 64 10" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M63.9989 1.13147C63.9668 1.727 63.2175 2.19195 62.3253 2.17498C40.4493 1.75859 18.7974 3.60053 0 10C19.3561 3.41033 40.1668 -0.318561 62.4407 0.0213911C63.3331 0.0350104 64.0311 0.535935 63.9989 1.13147Z" fill="white"/>
+                        </svg>
+                    </div>
+
+                    <!-- Noise Layer -->
+                    <div class="noise-layer"></div>
+
+                    <!-- Inner Glow Layer -->
+                    <div class="inner-glow-layer"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Static Orb -->
+        <div class="orb-section">
+            <h2>Static Orb</h2>
+            <div class="wrapper">
+                <div class="container static-container">
+                    <div class="background"></div>
+
+                    <!-- Fixed static particles -->
+                    <div id="static-particles"></div>
+                    
+                    <!-- deep blue dot (static) -->
+                    <div class="static-element deep-blue-dot-static">
+                        <div class="deep-blue-dot-svg">
+                            <svg width="256" height="256" viewBox="0 0 335 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_5006_1420)">
+                                <path d="M291.243 68.1566C313.466 98.8045 300.677 207.465 273.093 175.243C224.944 118.996 131.707 68.3551 187.44 40.1148C224.896 21.1351 271.343 40.7115 291.243 68.1566Z" fill="url(#paint0_radial_5006_1420)"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5006_1420" x="138.219" y="0.565552" width="196.359" height="212.585" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="16" result="effect1_foregroundBlur_5006_1420"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5006_1420" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(234.087 55.1034) rotate(-71.3294) scale(92.9867 67.8525)">
+                                <stop offset="0.25" stop-color="#4314FF"/>
+                                <stop offset="1" stop-color="#F719FF" stop-opacity="0"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- cyan shape (static) -->
+                    <div class="static-element cyan-shape-static">
+                        <div class="cyan-shape-svg">
+                            <svg width="256" height="256" viewBox="0 0 314 310" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_5006_1451)">
+                                <path d="M86.8811 91.8471C120.938 49.8708 223.082 26.4012 241.283 77.305C251.633 106.253 176.136 64.836 167.933 113.565C159.729 162.293 155.351 245.862 86.5671 245.377C17.7828 244.892 56.383 129.437 86.8811 91.8471Z" fill="url(#paint0_radial_5006_1451)"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_f_5006_1451" x="0.156738" y="0.342468" width="290.099" height="293.037" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                <feGaussianBlur stdDeviation="24" result="effect1_foregroundBlur_5006_1451"/>
+                                </filter>
+                                <radialGradient id="paint0_radial_5006_1451" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(141.405 147.174) rotate(105) scale(110.73 80.7998)">
+                                <stop offset="0.64" stop-color="#78A1FF"/>
+                                <stop offset="1" stop-color="#F719FF" stop-opacity="0.7"/>
+                                </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+           
+                    <!-- static rim light 1 -->
+                    <div class="static-rim-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 240 240" fill="none">
+                            <circle cx="120" cy="120" r="120" fill="url(#paint0_radial_4996_1031)"/>
+                            <defs>
+                                <radialGradient id="paint0_radial_4996_1031" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(138 89.5) rotate(120.933) scale(161.466)">
+                                <stop offset="0.755904" stop-color="white" stop-opacity="0"/>
+                                <stop offset="1" stop-color="white"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <!-- static rim light 2 -->
+                    <div class="static-rim-2"></div>
+
+                    <!-- rim light element (static) -->
+                    <div class="static-element rim-light-static">
+                        <div class="rim-light-svg">
+                            <svg width="256" height="256" viewBox="0 0 272 272" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_f_4996_1028)">
+                                    <circle cx="136" cy="136" r="128" fill="url(#paint0_radial_4996_1028)"/>
+                                </g>
+                                <defs>
+                                    <filter id="filter0_f_4996_1028" x="0" y="0" width="272" height="272" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                                    <feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur_4996_1028"/>
+                                    </filter>
+                                    <radialGradient id="paint0_radial_4996_1028" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(136 264) rotate(-90) scale(256)">
+                                    <stop offset="0.667005" stop-color="white" stop-opacity="0"/>
+                                    <stop offset="1" stop-color="white"/>
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Noise Layer -->
+                    <div class="noise-layer"></div>
+
+                    <!-- Inner Glow Layer -->
+                    <div class="inner-glow-layer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
