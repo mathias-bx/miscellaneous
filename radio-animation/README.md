@@ -19,8 +19,8 @@ This is a standalone prototype of a custom radio button component built with HTM
 ## Files
 
 - `index.html` - The main HTML structure
-- `css/style.css` - All styling for the radio buttons
-- `js/script.js` - JavaScript for handling selection and UI updates
+- `style.css` - All styling for the radio buttons
+- `script.js` - JavaScript for handling selection and UI updates
 
 ## Customization
 
