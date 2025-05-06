@@ -1,0 +1,113 @@
+/* Main container */
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Container for the radio group itself */
+.radio-group-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 512px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Radio label styling */
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  user-select: none;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* Ensure last radio doesn't have extra margin */
+.radio-label:last-child {
+  margin-bottom: 0;
+}
+
+/* Hide the default radio input */
+.hidden-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom radio button styling */
+.custom-radio {
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  background-color: #FFF;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 10px;
+}
+
+/* Hover state for unselected radios */
+.radio-label:hover .custom-radio:not(.checked) {
+  border-color: #adb5bd;
+  background-color: #F5F5F5;
+}
+
+/* Active state when clicking */
+.radio-label:active .custom-radio:not(.checked) {
+  border-width: 2px;
+  border-color: #adb5bd;
+  background-color: #F2F2F2;
+}
+
+/* Focus state for accessibility */
+.hidden-radio:focus-visible + .custom-radio {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(99, 91, 255, 0.5);
+  border-color: #635bff;
+  transition: box-shadow 0.1s ease, border-color 0.1s ease;
+}
+
+/* Selected state styling */
+.custom-radio.checked {
+  border-color: #635bff;
+  border-width: 7px;
+  background-color: #fff;
+  transition: border-color 0.1s, border-width 0.1s cubic-bezier(0, 0.55, 0.45, 1);
+}
+
+/* Selected info section */
+.selected-info {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  width: 100%;
+}
+
+.selected-info h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* Heading styles */
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+} 

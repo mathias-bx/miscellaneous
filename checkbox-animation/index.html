@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Checkbox Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Checkbox Prototype</h1>
+    
+    <!-- Single Checkbox -->
+    <div class="checkbox-section">
+      <h2>Single Checkbox</h2>
+      <label class="checkbox-label">
+        <input type="checkbox" class="hidden-checkbox">
+        <span class="custom-checkbox">
+          <span class="checkmark hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+              <polyline
+                class="checkmark-path"
+                points="40 144 96 200 224 72"
+                fill="none"
+                stroke="#FFFFFF"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="24"
+              />
+            </svg>
+          </span>
+        </span>
+        <span>Check me!</span>
+      </label>
+    </div>
+
+    <!-- Checkbox List with Select All -->
+    <div class="checkbox-section">
+      <h2>Team Members</h2>
+      <div class="select-all-container">
+        <label class="checkbox-label select-all-label">
+          <input type="checkbox" class="hidden-checkbox select-all-input">
+          <span class="custom-checkbox">
+            <span class="checkmark hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+                <polyline
+                  class="checkmark-path"
+                  points="40 144 96 200 224 72"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="24"
+                />
+              </svg>
+            </span>
+            <span class="indeterminate-indicator hidden"></span>
+          </span>
+          <span>Select All</span>
+        </label>
+      </div>
+
+      <div class="member-list">
+        <label class="checkbox-label member-item">
+          <input type="checkbox" class="hidden-checkbox member-checkbox" value="1">
+          <span class="custom-checkbox">
+            <span class="checkmark hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+                <polyline
+                  class="checkmark-path"
+                  points="40 144 96 200 224 72"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="24"
+                />
+              </svg>
+            </span>
+          </span>
+          <span>Alice</span>
+        </label>
+
+        <label class="checkbox-label member-item">
+          <input type="checkbox" class="hidden-checkbox member-checkbox" value="2">
+          <span class="custom-checkbox">
+            <span class="checkmark hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+                <polyline
+                  class="checkmark-path"
+                  points="40 144 96 200 224 72"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="24"
+                />
+              </svg>
+            </span>
+          </span>
+          <span>Bob</span>
+        </label>
+
+        <label class="checkbox-label member-item">
+          <input type="checkbox" class="hidden-checkbox member-checkbox" value="3">
+          <span class="custom-checkbox">
+            <span class="checkmark hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+                <polyline
+                  class="checkmark-path"
+                  points="40 144 96 200 224 72"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="24"
+                />
+              </svg>
+            </span>
+          </span>
+          <span>Charlie</span>
+        </label>
+
+        <label class="checkbox-label member-item">
+          <input type="checkbox" class="hidden-checkbox member-checkbox" value="4">
+          <span class="custom-checkbox">
+            <span class="checkmark hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+                <polyline
+                  class="checkmark-path"
+                  points="40 144 96 200 224 72"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="24"
+                />
+              </svg>
+            </span>
+          </span>
+          <span>Diana</span>
+        </label>
+      </div>
+
+      <div class="selected-info">
+        <h3>Selected:</h3>
+        <p class="no-selected">No members selected.</p>
+        <ul class="selected-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> 

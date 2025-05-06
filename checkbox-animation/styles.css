@@ -1,0 +1,171 @@
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.checkbox-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Checkbox styles */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  user-select: none;
+}
+
+.hidden-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkbox {
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  background-color: #FFF;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 12px;
+}
+
+.hidden-checkbox:checked + .custom-checkbox {
+  background-color: #6950F3;
+  border-color: #6950F3;
+}
+
+.checkbox-label:hover .custom-checkbox:not(.checked) {
+  border-color: #aaa;
+}
+
+.checkbox-label:active .custom-checkbox:not(.checked) {
+  background-color: #ddd;
+  border-color: #999;
+  border-width: 2px;
+}
+
+.hidden-checkbox:focus-visible + .custom-checkbox {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(80, 147, 243, 0.6);
+}
+
+.checkbox-label:hover .hidden-checkbox:checked + .custom-checkbox,
+.checkbox-label:hover .custom-checkbox.indeterminate {
+  background-color: #5A43D1;
+  border-color: #5A43D1;
+}
+
+.checkbox-label:active .hidden-checkbox:checked + .custom-checkbox,
+.checkbox-label:active .custom-checkbox.indeterminate {
+  background-color: #4B36AF;
+  border-color: #4B36AF;
+  border-width: 2px;
+}
+
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.checkmark.hidden {
+  display: none;
+}
+
+.indeterminate-indicator {
+  display: block;
+  width: 12px;
+  height: 1.5px;
+  background-color: #FFFFFF;
+  border-radius: 1px;
+}
+
+.indeterminate-indicator.hidden {
+  display: none;
+}
+
+.checkmark-path {
+  stroke-dasharray: 310;
+  stroke-dashoffset: 310;
+  animation: drawCheck 0.2s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Member list styles */
+.select-all-container {
+  margin-bottom: 20px;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.selected-info {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.selected-info h3 {
+  margin-bottom: 10px;
+}
+
+.selected-list {
+  list-style: none;
+}
+
+.selected-list li {
+  margin-bottom: 5px;
+}
+
+.no-selected {
+  color: #777;
+  font-style: italic;
+} 
