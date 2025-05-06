@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs v2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <div class="moving-background"></div>
+            <!-- Remove Old Tabs -->
+            <!-- <button class="tab-button active" data-tab="tab1">Tab 1</button> ... -->
+
+            <!-- Add New Salon Service Tabs -->
+            <button class="tab-button active" data-tab="haircut">Haircut & Style</button>
+            <button class="tab-button" data-tab="coloring">Hair Coloring</button>
+            <button class="tab-button" data-tab="highlights">Highlights</button>
+            <button class="tab-button" data-tab="balayage">Balayage</button>
+            <button class="tab-button" data-tab="blowout">Blowout</button>
+            <button class="tab-button" data-tab="manicure">Manicure</button>
+            <button class="tab-button" data-tab="pedicure">Pedicure</button>
+            <button class="tab-button" data-tab="gelnails">Gel Nails</button>
+            <button class="tab-button" data-tab="facial">Facial</button>
+            <button class="tab-button" data-tab="microderm">Microdermabrasion</button>
+            <button class="tab-button" data-tab="peel">Chemical Peel</button>
+            <button class="tab-button" data-tab="brows">Eyebrow Shaping</button>
+            <button class="tab-button" data-tab="browtint">Eyebrow Tinting</button>
+            <button class="tab-button" data-tab="lashes">Eyelash Extensions</button>
+            <button class="tab-button" data-tab="makeup">Makeup Application</button>
+            <button class="tab-button" data-tab="waxlegs">Waxing (Legs)</button>
+            <button class="tab-button" data-tab="waxbikini">Waxing (Bikini)</button>
+            <button class="tab-button" data-tab="waxface">Waxing (Face)</button>
+            <button class="tab-button" data-tab="massagesw">Massage (Swedish)</button>
+            <button class="tab-button" data-tab="massagedeep">Massage (Deep Tissue)</button>
+        </div>
+        <!-- Add container for arrows -->
+        <div class="tab-arrow-container">
+            <button class="tab-arrow left" id="tab-arrow-left" aria-label="Scroll tabs left">
+                <!-- Left Arrow SVG (Rotated via CSS) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+            </button>
+            <button class="tab-arrow right" id="tab-arrow-right" aria-label="Scroll tabs right">
+                 <!-- Right Arrow SVG -->
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Remove Old Content Sections -->
+    <!-- <section id="tab1" class="content-section"> ... </section> -->
+
+    <!-- Add New Salon Service Content Sections -->
+    <section id="haircut" class="content-section">
+        <h2>Haircut & Style</h2>
+        <p>Details about our haircutting and styling services.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="coloring" class="content-section">
+        <h2>Hair Coloring</h2>
+        <p>Details about our hair coloring options.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="highlights" class="content-section">
+        <h2>Highlights</h2>
+        <p>Details about highlights.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="balayage" class="content-section">
+        <h2>Balayage</h2>
+        <p>Details about balayage services.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="blowout" class="content-section">
+        <h2>Blowout</h2>
+        <p>Details about blowouts.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="manicure" class="content-section">
+        <h2>Manicure</h2>
+        <p>Details about manicures.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="pedicure" class="content-section">
+        <h2>Pedicure</h2>
+        <p>Details about pedicures.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="gelnails" class="content-section">
+        <h2>Gel Nails</h2>
+        <p>Details about gel nail services.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="facial" class="content-section">
+        <h2>Facial</h2>
+        <p>Details about our facials.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="microderm" class="content-section">
+        <h2>Microdermabrasion</h2>
+        <p>Details about microdermabrasion.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="peel" class="content-section">
+        <h2>Chemical Peel</h2>
+        <p>Details about chemical peels.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="brows" class="content-section">
+        <h2>Eyebrow Shaping</h2>
+        <p>Details about eyebrow shaping.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="browtint" class="content-section">
+        <h2>Eyebrow Tinting</h2>
+        <p>Details about eyebrow tinting.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="lashes" class="content-section">
+        <h2>Eyelash Extensions</h2>
+        <p>Details about eyelash extensions.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="makeup" class="content-section">
+        <h2>Makeup Application</h2>
+        <p>Details about makeup application services.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="waxlegs" class="content-section">
+        <h2>Waxing (Legs)</h2>
+        <p>Details about leg waxing.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="waxbikini" class="content-section">
+        <h2>Waxing (Bikini)</h2>
+        <p>Details about bikini waxing.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="waxface" class="content-section">
+        <h2>Waxing (Face)</h2>
+        <p>Details about facial waxing.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="massagesw" class="content-section">
+        <h2>Massage (Swedish)</h2>
+        <p>Details about Swedish massage.</p>
+        <p>...</p> <p>...</p>
+    </section>
+    <section id="massagedeep" class="content-section">
+        <h2>Massage (Deep Tissue)</h2>
+        <p>Details about deep tissue massage.</p>
+        <p>...</p> <p>...</p>
+    </section>
+
+    <script src="script.js"></script>
+    
+    <!-- Example Switcher -->
+    <div class="example-switcher" onclick="switchExample('tabs-switch.html')">
+        Scroll view
+    </div>
+
+    <script>
+        function switchExample(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs Switch</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles specific to content switching */
+        .tab-content {
+            display: none;
+            animation: fadeEffect 0.3s ease-in-out;
+            padding: 40px 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Adjust spacing since we don't need large section heights */
+        .content-wrapper {
+            margin-top: 30px;
+            min-height: calc(100vh - 120px);
+        }
+        
+        /* Make tab container not sticky, since content will change in place */
+        .tab-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <div class="moving-background"></div>
+            <button class="tab-button active" data-tab="haircut">Haircut & Style</button>
+            <button class="tab-button" data-tab="coloring">Hair Coloring</button>
+            <button class="tab-button" data-tab="highlights">Highlights</button>
+            <button class="tab-button" data-tab="balayage">Balayage</button>
+            <button class="tab-button" data-tab="blowout">Blowout</button>
+            <button class="tab-button" data-tab="manicure">Manicure</button>
+            <button class="tab-button" data-tab="pedicure">Pedicure</button>
+            <button class="tab-button" data-tab="facial">Facial</button>
+            <button class="tab-button" data-tab="massage">Massage</button>
+            <button class="tab-button" data-tab="waxing">Waxing</button>
+            <button class="tab-button" data-tab="makeup">Makeup</button>
+            <button class="tab-button" data-tab="nailart">Nail Art</button>
+            <button class="tab-button" data-tab="eyebrows">Eyebrow Styling</button>
+        </div>
+        <!-- Tab arrows -->
+        <div class="tab-arrow-container">
+            <button class="tab-arrow left" id="tab-arrow-left" aria-label="Scroll tabs left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+            </button>
+            <button class="tab-arrow right" id="tab-arrow-right" aria-label="Scroll tabs right">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Tab Content Sections -->
+        <div id="haircut" class="tab-content active">
+            <h2>Haircut & Style</h2>
+            <p>Our professional stylists provide expert haircuts tailored to your face shape, hair texture, and personal style preferences. Each service includes a consultation, relaxing shampoo, precision cut, and style.</p>
+            <p>Our stylists stay current with the latest trends and techniques to give you a fresh, modern look. Whether you're looking for a subtle trim or a dramatic change, we'll help you achieve the perfect style.</p>
+            <p>Service includes:</p>
+            <ul>
+                <li>Professional consultation</li>
+                <li>Shampoo and conditioning treatment</li>
+                <li>Precision cut</li>
+                <li>Blow dry and style</li>
+                <li>Styling recommendations and product advice</li>
+            </ul>
+        </div>
+
+        <div id="coloring" class="tab-content">
+            <h2>Hair Coloring</h2>
+            <p>Transform your look with our custom hair color services. Our colorists are highly trained to create the perfect shade that complements your skin tone and matches your desired style.</p>
+            <p>We use premium color products that provide vibrant, long-lasting results while maintaining hair health and shine. From natural-looking hues to bold fashion colors, we can achieve the look you want.</p>
+            <p>Service includes:</p>
+            <ul>
+                <li>Color consultation with color specialist</li>
+                <li>Custom-formulated hair color</li>
+                <li>Professional application</li>
+                <li>Processing time</li>
+                <li>Color-protecting conditioning treatment</li>
+                <li>Blow dry and style</li>
+            </ul>
+        </div>
+
+        <div id="highlights" class="tab-content">
+            <h2>Highlights</h2>
+            <p>Our highlight services add dimension and brightness to your hair. Our expert colorists use foiling and hand-painting techniques to create natural-looking depth and contrast.</p>
+            <p>Choose from partial or full highlights to achieve your desired level of dimension. We customize each highlight service to complement your base color and enhance your overall look.</p>
+        </div>
+
+        <div id="balayage" class="tab-content">
+            <h2>Balayage</h2>
+            <p>Balayage is a French highlighting technique that creates a natural, sun-kissed look with a gradient effect from roots to ends. This low-maintenance color option grows out beautifully without harsh lines.</p>
+            <p>Our skilled colorists hand-paint highlights precisely where the sun would naturally lighten your hair, creating a soft, dimensional result that looks natural and effortless.</p>
+        </div>
+
+        <div id="blowout" class="tab-content">
+            <h2>Blowout</h2>
+            <p>Our professional blowout service leaves your hair looking smooth, voluminous, and polished. Perfect for special occasions or whenever you want to look your best.</p>
+            <p>Our stylists use premium products and tools to create long-lasting styles that resist humidity and maintain their shape. Choose from sleek and straight, soft waves, or bouncy volume.</p>
+        </div>
+
+        <div id="manicure" class="tab-content">
+            <h2>Manicure</h2>
+            <p>Our classic manicure service includes nail shaping, cuticle care, hand massage, and polish application. We use high-quality products to ensure a long-lasting, beautiful finish.</p>
+            <p>Upgrade to our signature manicure for additional exfoliation, extended massage, and premium treatments that nourish your hands and nails.</p>
+        </div>
+
+        <div id="pedicure" class="tab-content">
+            <h2>Pedicure</h2>
+            <p>Treat your feet to our relaxing pedicure service. We begin with a soothing foot soak, followed by nail shaping, cuticle care, callus removal, exfoliation, massage, and polish application.</p>
+            <p>Our pedicure thrones feature massage settings and sanitized basins for a hygienic and comfortable experience. Leave with refreshed, beautiful feet.</p>
+        </div>
+
+        <div id="facial" class="tab-content">
+            <h2>Facial</h2>
+            <p>Our customized facial treatments are designed to address your specific skin concerns. After a thorough skin analysis, our estheticians will select the appropriate products and techniques.</p>
+            <p>Each facial includes cleansing, exfoliation, extraction (if needed), mask, serum application, and moisturizer. Relax and enjoy a facial massage while the products work their magic.</p>
+        </div>
+
+        <div id="massage" class="tab-content">
+            <h2>Massage</h2>
+            <p>Experience deep relaxation with our therapeutic massage services. Our skilled massage therapists use various techniques to release tension, improve circulation, and promote overall wellness.</p>
+            <p>Choose from Swedish, deep tissue, hot stone, or aromatherapy massage options. Each session is customized to address your specific needs and preferences.</p>
+        </div>
+
+        <div id="waxing" class="tab-content">
+            <h2>Waxing</h2>
+            <p>Our professional waxing services provide long-lasting hair removal with minimal discomfort. We use premium wax formulas that are gentle on sensitive skin.</p>
+            <p>We offer facial waxing, body waxing, and Brazilian options. Our technicians work efficiently while ensuring your comfort throughout the process.</p>
+        </div>
+
+        <div id="makeup" class="tab-content">
+            <h2>Makeup</h2>
+            <p>Our makeup services enhance your natural beauty for any occasion. From subtle everyday looks to glamorous evening makeup, our artists create flawless results.</p>
+            <p>We use high-quality cosmetics that photograph beautifully and last throughout your event. Consultations are available to discuss your preferences and desired outcome.</p>
+        </div>
+
+        <div id="nailart" class="tab-content">
+            <h2>Nail Art</h2>
+            <p>Express your personality with our creative nail art services. Our nail technicians can create everything from subtle designs to elaborate artwork.</p>
+            <p>Options include hand-painted designs, chrome finishes, ombre effects, stamping, rhinestones, and 3D elements. We stay current with the latest trends and techniques.</p>
+        </div>
+
+        <div id="eyebrows" class="tab-content">
+            <h2>Eyebrow Styling</h2>
+            <p>Our eyebrow styling services frame your face and enhance your features. We offer shaping, tinting, and lamination options to achieve your desired look.</p>
+            <p>Our specialists analyze your face shape and natural brow structure to create the most flattering result. We'll help you maintain your brows with proper home care instructions.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
+            const tabButtonsContainer = document.querySelector('.tab-buttons');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const movingBackground = document.querySelector('.moving-background');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const arrowLeft = document.getElementById('tab-arrow-left');
+            const arrowRight = document.getElementById('tab-arrow-right');
+
+            // Constants
+            const FIXED_SCROLL_AMOUNT = 64; // Px to scroll tab bar beyond edge (desktop)
+            const FIXED_SCROLL_AMOUNT_MOBILE = 16; // Px to scroll tab bar beyond edge (mobile)
+            const VISIBLE_EDGE_THRESHOLD = 100; // Px threshold near edge to trigger extra tab scroll
+            const SCROLL_ARROW_TOLERANCE = 1; // Px tolerance for disabling scroll arrows
+
+            // Utility function to check if on mobile
+            const isMobile = () => window.innerWidth <= 768;
+
+            /**
+             * Moves the background element to the target tab button
+             */
+            function moveBackground(targetButton) {
+                if (!targetButton || !movingBackground || !tabButtonsContainer) return;
+
+                const containerRect = tabButtonsContainer.getBoundingClientRect();
+                const targetRect = targetButton.getBoundingClientRect();
+                const targetLeftRelativeToContainer = targetRect.left - containerRect.left + tabButtonsContainer.scrollLeft;
+
+                // Temporarily disable transition for instant positioning
+                movingBackground.style.transition = 'none';
+                movingBackground.style.transform = `translateX(${targetLeftRelativeToContainer}px)`;
+                movingBackground.style.width = `${targetRect.width}px`;
+                
+                // Force reflow to apply changes immediately
+                movingBackground.offsetHeight;
+                
+                // Restore transition for future changes
+                movingBackground.style.transition = 'transform 0.3s ease-in-out, width 0.3s ease-in-out';
+            }
+
+            /**
+             * Scrolls the horizontal tab bar to ensure the target tab is visible
+             */
+            function scrollTabBarToShowTab(targetButton) {
+                if (!tabButtonsContainer || !targetButton) return;
+
+                const containerRect = tabButtonsContainer.getBoundingClientRect();
+                const buttonRect = targetButton.getBoundingClientRect();
+                const computedStyle = window.getComputedStyle(tabButtonsContainer);
+                const paddingLeft = parseFloat(computedStyle.paddingLeft) || 0;
+                const paddingRight = parseFloat(computedStyle.paddingRight) || 0;
+
+                // Use different scroll amount based on device type
+                const scrollAmount = isMobile() ? FIXED_SCROLL_AMOUNT_MOBILE : FIXED_SCROLL_AMOUNT;
+
+                const allTabButtons = Array.from(tabButtons);
+                const currentIndex = allTabButtons.indexOf(targetButton);
+                const hasNextTab = currentIndex < allTabButtons.length - 1;
+                const hasPrevTab = currentIndex > 0;
+
+                const distanceToRightEdge = containerRect.right - buttonRect.right - paddingRight;
+                const distanceToLeftEdge = buttonRect.left - containerRect.left - paddingLeft;
+
+                const isPartiallyHiddenLeft = buttonRect.left < containerRect.left + paddingLeft;
+                const isPartiallyHiddenRight = buttonRect.right > containerRect.right - paddingRight;
+                const isFullyVisible = !isPartiallyHiddenLeft && !isPartiallyHiddenRight;
+
+                let adjustedScrollAmount = 0;
+
+                if (isPartiallyHiddenRight) {
+                    if (hasNextTab) {
+                        const minScrollRequired = buttonRect.right - (containerRect.right - paddingRight);
+                        adjustedScrollAmount = minScrollRequired + scrollAmount;
+                    } else {
+                        // Scroll just enough to show the last tab fully
+                        tabButtonsContainer.scrollTo({ 
+                            left: tabButtonsContainer.scrollLeft + buttonRect.right - (containerRect.right - paddingRight), 
+                            behavior: 'smooth' 
+                        });
+                        return;
+                    }
+                } else if (isPartiallyHiddenLeft) {
+                    if (hasPrevTab) {
+                        const minScrollRequired = (containerRect.left + paddingLeft) - buttonRect.left;
+                        adjustedScrollAmount = -(minScrollRequired + scrollAmount);
+                    } else {
+                        // Scroll just enough to show the first tab fully
+                        tabButtonsContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                        return;
+                    }
+                } else if (isFullyVisible) {
+                    // Check if fully visible tab is near an edge and has neighbors
+                    const isNearRightEdge = distanceToRightEdge < VISIBLE_EDGE_THRESHOLD && hasNextTab;
+                    const isNearLeftEdge = distanceToLeftEdge < VISIBLE_EDGE_THRESHOLD && hasPrevTab;
+
+                    if (isNearRightEdge) {
+                        adjustedScrollAmount = scrollAmount;
+                    } else if (isNearLeftEdge) {
+                        adjustedScrollAmount = -scrollAmount;
+                    }
+                }
+
+                if (adjustedScrollAmount !== 0) {
+                    tabButtonsContainer.scrollBy({ 
+                        left: adjustedScrollAmount, 
+                        behavior: 'smooth' 
+                    });
+                }
+            }
+
+            /**
+             * Updates the visibility and disabled state of the scroll arrows
+             */
+            function updateArrowStates() {
+                if (!tabButtonsContainer || !arrowLeft || !arrowRight) return;
+                
+                const maxScrollLeft = tabButtonsContainer.scrollWidth - tabButtonsContainer.clientWidth;
+                const currentScrollLeft = tabButtonsContainer.scrollLeft;
+
+                arrowLeft.disabled = currentScrollLeft <= SCROLL_ARROW_TOLERANCE;
+                arrowRight.disabled = currentScrollLeft >= maxScrollLeft - SCROLL_ARROW_TOLERANCE;
+
+                const needsScrolling = tabButtonsContainer.scrollWidth > tabButtonsContainer.clientWidth + SCROLL_ARROW_TOLERANCE;
+                const showArrows = needsScrolling && window.innerWidth > 768;
+
+                arrowLeft.classList.toggle('hidden', !showArrows);
+                arrowRight.classList.toggle('hidden', !showArrows);
+            }
+
+            /**
+             * Sets the active tab and shows corresponding content
+             */
+            function setActiveTab(tabId) {
+                // Update tab buttons
+                tabButtons.forEach(btn => {
+                    const isActive = btn.getAttribute('data-tab') === tabId;
+                    btn.classList.toggle('active', isActive);
+                    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+
+                // Show corresponding content and hide others
+                tabContents.forEach(content => {
+                    content.classList.toggle('active', content.id === tabId);
+                });
+
+                // Update background position
+                const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                if (activeButton) {
+                    moveBackground(activeButton);
+                    scrollTabBarToShowTab(activeButton);
+                }
+            }
+
+            // Event Listeners
+            
+            // Tab Clicks
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    // Add 'clicked' class to all tab buttons to remove transition
+                    tabButtons.forEach(btn => {
+                        btn.classList.add('clicked');
+                    });
+                    
+                    setActiveTab(tabId);
+                    
+                    // Remove 'clicked' class after the color has changed (on next frame)
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            tabButtons.forEach(btn => {
+                                btn.classList.remove('clicked');
+                            });
+                        }, 50);
+                    });
+                });
+            });
+
+            // Tab bar horizontal scroll
+            if (tabButtonsContainer) {
+                tabButtonsContainer.addEventListener('scroll', updateArrowStates);
+            }
+
+            // Arrow clicks
+            if (arrowLeft) {
+                arrowLeft.addEventListener('click', () => {
+                    tabButtonsContainer.scrollBy({ 
+                        left: -tabButtonsContainer.clientWidth, 
+                        behavior: 'smooth' 
+                    });
+                });
+            }
+            
+            if (arrowRight) {
+                arrowRight.addEventListener('click', () => {
+                    tabButtonsContainer.scrollBy({ 
+                        left: tabButtonsContainer.clientWidth, 
+                        behavior: 'smooth' 
+                    });
+                });
+            }
+
+            // Window resize
+            window.addEventListener('resize', updateArrowStates);
+
+            // Initialization
+            function init() {
+                // Add ARIA roles and properties for accessibility
+                tabButtonsContainer.setAttribute('role', 'tablist');
+                
+                tabButtons.forEach(button => {
+                    const tabId = button.getAttribute('data-tab');
+                    button.setAttribute('role', 'tab');
+                    button.setAttribute('aria-controls', tabId);
+                    button.setAttribute('aria-selected', button.classList.contains('active') ? 'true' : 'false');
+                });
+                
+                tabContents.forEach(content => {
+                    content.setAttribute('role', 'tabpanel');
+                    content.setAttribute('aria-labelledby', `tab-${content.id}`);
+                });
+                
+                // Initial setup for first tab
+                const initialActiveButton = document.querySelector('.tab-button.active') || tabButtons[0];
+                if (initialActiveButton) {
+                    const tabId = initialActiveButton.getAttribute('data-tab');
+                    setActiveTab(tabId);
+                    
+                    // Initial tab may need to be scrolled into view and background positioned
+                    setTimeout(() => {
+                        initialActiveButton.scrollIntoView({ 
+                            behavior: 'instant', 
+                            inline: 'center' 
+                        });
+                        moveBackground(initialActiveButton);
+                        updateArrowStates();
+                    }, 0);
+                }
+            }
+
+            // Run initialization
+            init();
+        });
+    </script>
+    
+    <!-- Example Switcher -->
+    <div class="example-switcher" onclick="switchExample('index.html')">
+        Tabs view
+    </div>
+
+    <script>
+        function switchExample(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html> 
