@@ -1,0 +1,66 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.spinner-container {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.loader {
+    position: relative;
+    margin: 0 auto;
+    width: 64px;
+}
+
+.loader:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.circular {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    margin: auto;
+    animation: rotate 2.5s linear infinite;
+}
+
+.track {
+    stroke: #E8E8E8;
+    stroke-width: 5;
+}
+
+/* Common styles for all paths */
+.path, .path-inner, .path-innermost {
+    stroke: #6950F3;
+    stroke-linecap: round;
+    transform-origin: center;
+    stroke-dasharray: 28, 512;
+}
+
+.path {
+    animation: rotate 1.5s linear infinite;
+}
+
+.path-inner {
+    stroke-dashoffset: 0;
+    animation: rotate 2s linear infinite;
+}
+
+.path-innermost {
+    stroke-dashoffset: 0;
+    animation: rotate 2.5s linear infinite;
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
