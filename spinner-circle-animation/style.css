@@ -32,6 +32,7 @@ body {
     inset: 0;
     margin: auto;
     animation: rotate 1.75s linear infinite;
+    clip-path: url(#spinnerClipPath);
 }
 
 .track {
