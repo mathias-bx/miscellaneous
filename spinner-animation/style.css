@@ -7,6 +7,26 @@ body {
     margin: 0;
 }
 
+.spinners-wrapper {
+    display: flex;
+    align-items: center; /* Align spinner groups vertically */
+    gap: 64px; /* Space between the two spinner groups - updated */
+}
+
+.spinner-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px; /* Space between spinner and its label */
+}
+
+.spinner-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #333; /* Label text color */
+    margin: 0; /* Remove default paragraph margin */
+}
+
 .spinner-container {
     display: flex;
     align-items: center; /* Vertically align dots if they have different heights due to animation */
