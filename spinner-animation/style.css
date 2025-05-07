@@ -3,21 +3,46 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #f7f7f7; /* Light gray background */
     margin: 0;
 }
 
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #ccc;
-    border-top-color: #3498db;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+.spinner-container {
+    display: flex;
+    align-items: center; /* Vertically align dots if they have different heights due to animation */
+    gap: 6px
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #6950F3; /* Dot color */
+    border-radius: 50%;
+    opacity: 0; /* Start with opacity 0 to prevent initial flash */
+    animation: dot-opacity-wave 1s infinite ease-in-out; /* Renamed animation */
+}
+
+/* Animation delays for each dot */
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Renamed animation */
+@keyframes dot-opacity-wave {
+    0%, 90%, 100% {
+        /* transform: scale(0.8); */ /* Removed scaling */
+        opacity: 0;
+    }
+    45% {
+        /* transform: scale(1.2); */ /* Removed scaling */
+        opacity: 1;
     }
 } 
