@@ -31,7 +31,7 @@ body {
     width: 100%;
     inset: 0;
     margin: auto;
-    animation: rotate 2.5s linear infinite;
+    animation: rotate 1.75s linear infinite;
 }
 
 .track {
@@ -44,7 +44,7 @@ body {
     stroke: #6950F3;
     stroke-linecap: round;
     transform-origin: center;
-    stroke-dasharray: 28, 512;
+    stroke-dasharray: 32, 512;
 }
 
 .path {
