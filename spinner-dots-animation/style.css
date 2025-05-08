@@ -39,7 +39,7 @@ body {
     background-color: #6950F3; /* Dot color */
     border-radius: 50%;
     opacity: 0; /* Start with opacity 0 to prevent initial flash */
-    animation: dot-opacity-wave 1s infinite ease-in-out; /* Renamed animation */
+    animation: dot-opacity-wave 800ms infinite ease-in-out; /* Renamed animation */
 }
 
 /* Animation delays for each dot */
@@ -48,21 +48,19 @@ body {
 }
 
 .dot:nth-child(2) {
-    animation-delay: 0.2s;
+    animation-delay: 0.15s;
 }
 
 .dot:nth-child(3) {
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
 }
 
 /* Renamed animation */
 @keyframes dot-opacity-wave {
     0%, 90%, 100% {
-        /* transform: scale(0.8); */ /* Removed scaling */
         opacity: 0;
     }
     45% {
-        /* transform: scale(1.2); */ /* Removed scaling */
         opacity: 1;
     }
 } 
