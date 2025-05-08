@@ -36,7 +36,7 @@ body {
 .dot {
     width: 8px;
     height: 8px;
-    background-color: #6950F3; /* Dot color */
+    background-color: #0D1619; /* Dot color */
     border-radius: 50%;
     opacity: 0; /* Start with opacity 0 to prevent initial flash */
     animation: dot-opacity-wave 800ms infinite ease-in-out; /* Renamed animation */
