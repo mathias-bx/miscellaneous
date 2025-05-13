@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkmark Animation</title>
+  <style>
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    /* Checkbox container styles */
+    .checkmark-container {
+      height: 24px;
+      width: 24px;
+      background-color: #6950F3;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    /* Checkmark animation */
+    .checkmark-path {
+      stroke-dasharray: 310;
+      stroke-dashoffset: 310;
+      animation: drawCheck 0.6s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+    }
+
+    @keyframes drawCheck {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checkmark Animation</h1>
+    <div class="checkmark-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 256 256">
+        <polyline
+          class="checkmark-path"
+          points="40 144 96 200 224 72"
+          fill="none"
+          stroke="#FFFFFF"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="24"
+        />
+      </svg>
+    </div>
+  </div>
+</body>
+</html> 
