@@ -5,63 +5,93 @@ body {
     min-height: 100vh;
     background-color: #f0f0f0;
     margin: 0;
+    flex-direction: row;
+    gap: 20px;
 }
 
-.spinner-container {
-    position: relative;
-    width: 64px;
-    height: 64px;
-}
+.spinner-wrapper {
+    display: inline-flex;
+    vertical-align: middle;
+    /* Default width and height removed, will be set by size classes */
 
-.loader {
-    position: relative;
-    margin: 0 auto;
-    width: 64px;
-}
-
-.loader:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-}
-
-.circular {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    inset: 0;
-    margin: auto;
-    animation: rotate 1.75s linear infinite;
-    clip-path: url(#spinnerClipPath);
-}
-
-.track {
-    stroke: #E8E8E8;
-    stroke-width: 5;
-}
-
-/* Common styles for all paths */
-.path, .path-inner, .path-innermost {
-    stroke: #6950F3;
-    stroke-linecap: round;
+    /* Continuous rotation animation */
+    animation-name: spinner-rotate;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.4, 0.2, 0.6, 0.8);
+    /* animation-timing-function: linear; */
     transform-origin: center;
-    stroke-dasharray: 32, 512;
 }
 
-.path {
-    animation: rotate 1.5s linear infinite;
+.spinner-svg {
+    width: 100%;
+    height: 100%;
+
+    /* Load-in animation: fade, initial rotate, path stretch */
+    animation-name: spinner-loadIn;
+    animation-duration: 1s; /* Duration of the load-in sequence */
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; /* Stay at the end state of loadIn */
+    
+    opacity: 0; /* Initial state for loadIn animation to fade in */
 }
 
-.path-inner {
-    stroke-dashoffset: 0;
-    animation: rotate 2s linear infinite;
+.spinner-track {
+    fill: none;
+    stroke: rgba(13, 22, 25, 0.05);
+    stroke-width: 1.5; /* Same as the animated path */
 }
 
-.path-innermost {
-    stroke-dashoffset: 0;
-    animation: rotate 2.5s linear infinite;
+.spinner-circle {
+    fill: none;
+    stroke: #727373;
+    stroke-dasharray: 60; /* Fixed dash array for the circle path */
+    /* stroke-dashoffset is animated by spinner-loadIn */
+    stroke-linecap: round;
+    stroke-width: 1.5; /* Stroke width relative to the 16x16 SVG viewBox */
 }
 
-@keyframes rotate {
-    to { transform: rotate(360deg); }
+@keyframes spinner-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner-loadIn {
+    from {
+        transform: rotate(45deg); /* Initial rotation for the SVG element itself */
+        opacity: 0;
+        stroke-dashoffset: 60; /* Makes the line appear short or mostly invisible */
+    }
+    to {
+        transform: rotate(225deg); /* SVG rotates during its load-in */
+        opacity: 1;
+        stroke-dashoffset: 50; /* Reduces offset, revealing/stretching the line */
+    }
+}
+
+/* Size classes for the spinner */
+.spinner-size-16 {
+    width: 16px;
+    height: 16px;
+}
+
+.spinner-size-20 {
+    width: 20px;
+    height: 20px;
+}
+
+.spinner-size-24 {
+    width: 24px;
+    height: 24px;
+}
+
+.spinner-size-32 {
+    width: 32px;
+    height: 32px;
+}
+
+.spinner-size-48 {
+    width: 48px;
+    height: 48px;
 }
