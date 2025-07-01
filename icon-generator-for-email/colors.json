@@ -1,0 +1,12 @@
+[
+  { "name": "neutral", "hex": "#0D1619" },
+  { "name": "neutralFaded", "hex": "#727373" },
+  { "name": "accent", "hex": "#6950F3" },
+  { "name": "positive", "hex": "#1F8900" },
+  { "name": "warning", "hex": "#B7570B" },
+  { "name": "danger", "hex": "#D4163A" },
+  { "name": "disabled", "hex": "#ACACAC" },
+  { "name": "ghost", "hex": "#BFBFBF" },
+  { "name": "onLoud", "hex": "#FFFFFF" },
+  { "name": "info", "hex": "#2370EC" }
+] 

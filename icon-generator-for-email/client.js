@@ -7,21 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebarIconPreview = document.getElementById('sidebar-icon-preview');
   const sizePresetsContainer = document.getElementById('size-presets');
   const customSizeInput = document.getElementById('size-input');
-  const colorInput = document.getElementById('color-input');
+  const colorSwatchesContainer = document.getElementById('color-swatches');
   const convertBtn = document.getElementById('convert-btn');
   const resultContainer = document.getElementById('result-container');
 
   let icons = [];
+  let colors = [];
   let selectedIcon = null;
+  let selectedColor = '#111827';
   let currentSvgContent = '';
 
-  // Fetch and render icons
-  fetch('/icons')
-    .then(response => response.json())
-    .then(data => {
-      icons = data;
-      renderIcons(icons);
-    });
+  // Fetch initial data
+  Promise.all([
+    fetch('/icons').then(res => res.json()),
+    fetch('/colors.json').then(res => res.json())
+  ]).then(([iconData, colorData]) => {
+    icons = iconData;
+    colors = colorData;
+    renderIcons(icons);
+    renderColorSwatches(colors);
+  });
 
   // Render icons in the grid
   function renderIcons(iconsToRender) {
@@ -40,6 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Render color swatches
+  function renderColorSwatches(colorsToRender) {
+    colorSwatchesContainer.innerHTML = '';
+    colorsToRender.forEach(color => {
+      const swatch = document.createElement('div');
+      swatch.className = 'color-swatch';
+      swatch.dataset.hex = color.hex;
+      swatch.style.backgroundColor = color.hex;
+      swatch.title = color.name;
+      if (color.hex === selectedColor) {
+        swatch.classList.add('selected');
+      }
+      colorSwatchesContainer.appendChild(swatch);
+    });
+  }
+
   // Search functionality
   searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -51,10 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
   iconGrid.addEventListener('click', (e) => {
     const iconCard = e.target.closest('.icon-card');
     if (iconCard) {
-      // Manage selection state in the grid
-      const currentSelected = iconGrid.querySelector('.selected');
-      if (currentSelected) {
-        currentSelected.classList.remove('selected');
+      const currentSelectedIcon = iconGrid.querySelector('.selected');
+      if (currentSelectedIcon) {
+        currentSelectedIcon.classList.remove('selected');
       }
       iconCard.querySelector('.icon-item').classList.add('selected');
 
@@ -63,25 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
       sidebar.classList.add('open');
       resultContainer.innerHTML = '';
 
-      // Reset color to default
-      colorInput.value = '#000000';
-      
-      // Fetch and display SVG for live preview
       fetch(`/icons-32px/${selectedIcon}`)
         .then(response => response.text())
         .then(svgText => {
-            currentSvgContent = svgText;
-            updatePreviewColor(colorInput.value)
-        })
-
+          currentSvgContent = svgText;
+          updatePreviewColor(selectedColor);
+        });
     }
   });
 
   // Close sidebar
   function closeSidebar() {
     sidebar.classList.remove('open');
-    selectedIcon = null;
-
     const currentSelected = iconGrid.querySelector('.selected');
     if (currentSelected) {
       currentSelected.classList.remove('selected');
@@ -91,20 +104,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', (e) => {
     if (!sidebar.contains(e.target) && !e.target.closest('.icon-card')) {
-        closeSidebar();
+      closeSidebar();
     }
   });
 
-  // Update preview color on input
-  colorInput.addEventListener('input', () => {
-    updatePreviewColor(colorInput.value);
-  })
-
-  function updatePreviewColor(color){
-      if(currentSvgContent){
-          const coloredSvg = currentSvgContent.replace(/fill="(black|#000|#000000)"/g, `fill="${color}"`);
-          sidebarIconPreview.innerHTML = coloredSvg;
+  // Handle color selection
+  colorSwatchesContainer.addEventListener('click', (e) => {
+    if (e.target.matches('.color-swatch')) {
+      const currentSelected = colorSwatchesContainer.querySelector('.selected');
+      if (currentSelected) {
+        currentSelected.classList.remove('selected');
       }
+      e.target.classList.add('selected');
+      selectedColor = e.target.dataset.hex;
+      updatePreviewColor(selectedColor);
+    }
+  });
+
+  function updatePreviewColor(color) {
+    if (currentSvgContent) {
+      const coloredSvg = currentSvgContent.replace(/fill="(black|#000|#000000)"/g, `fill="${color}"`);
+      sidebarIconPreview.innerHTML = coloredSvg;
+    }
   }
 
   // Handle size preset selection
@@ -135,15 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const size = getSelectedSize();
     if (!size || size < 1 || size > 2048) {
-        resultContainer.innerHTML = `<p style="color: red;">Invalid size. Must be between 1 and 2048.</p>`;
-        return;
+      resultContainer.innerHTML = `<p style="color: red;">Invalid size. Must be between 1 and 2048.</p>`;
+      return;
     }
-
-    const color = colorInput.value;
 
     resultContainer.innerHTML = 'Converting...';
 
-    fetch(`/convert?icon=${selectedIcon}&size=${size}&color=${encodeURIComponent(color)}`)
+    fetch(`/convert?icon=${selectedIcon}&size=${size}&color=${encodeURIComponent(selectedColor)}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Conversion failed');

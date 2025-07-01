@@ -2,7 +2,7 @@
   --background-color: #f0f2f5;
   --container-bg: white;
   --text-color: #333;
-  --primary-color: #007bff;
+  --primary-color: #0D1619;
   --primary-hover: #0056b3;
   --border-color: #ccc;
   --shadow-color: rgba(0, 0, 0, 0.1);
@@ -209,6 +209,27 @@ main {
   border: none;
 }
 
+.color-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 0.5rem;
+}
+
+.color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.color-swatch.selected {
+  box-shadow: 0 0 0 2px var(--primary-color);
+  transform: scale(1.1);
+}
+
 .size-presets {
   display: flex;
   gap: 0.5rem;
@@ -228,6 +249,18 @@ main {
   background-color: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
+}
+
+.preset-btn:not(.active):hover {
+  background-color: #2C3032;
+  color: white;
+  border-color: #2C3032;
+}
+
+.preset-btn:not(.active):active {
+  background-color: #454B4E;
+  color: white;
+  border-color: #454B4E;
 }
 
 .hidden {
