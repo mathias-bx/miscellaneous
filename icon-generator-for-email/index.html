@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Icon Library</h1>
+      <div class="search-wrapper">
+        <input type="search" id="search-input" placeholder="Search icons...">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="icon-grid" class="container">
+      <!-- Icons will be populated by JavaScript -->
+    </div>
+  </main>
+
+  <aside id="conversion-sidebar" class="sidebar">
+    <div class="sidebar-content">
+      <div class="sidebar-header">
+        <h2 id="sidebar-icon-name"></h2>
+        <button id="close-sidebar" class="close-button">&times;</button>
+      </div>
+      <div class="sidebar-body">
+        <div class="preview">
+          <img id="sidebar-icon-preview" src="" alt="icon preview">
+        </div>
+        <div class="controls">
+          <label>Size (px):</label>
+          <div id="size-presets" class="size-presets">
+              <button class="preset-btn active" data-size="64">64</button>
+              <button class="preset-btn" data-size="128">128</button>
+              <button class="preset-btn" data-size="256">256</button>
+              <button class="preset-btn" data-size="custom">Custom</button>
+          </div>
+          <input type="number" id="size-input" value="256" min="1" max="2048" class="hidden">
+          <button id="convert-btn">Download PNG</button>
+        </div>
+      </div>
+      <div id="result-container" class="result"></div>
+    </div>
+  </aside>
+
+  <script src="client.js"></script>
+</body>
+</html> 
