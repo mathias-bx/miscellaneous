@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebarIconPreview = document.getElementById('sidebar-icon-preview');
   const sizePresetsContainer = document.getElementById('size-presets');
   const customSizeInput = document.getElementById('size-input');
+  const colorInput = document.getElementById('color-input');
   const convertBtn = document.getElementById('convert-btn');
   const resultContainer = document.getElementById('result-container');
 
   let icons = [];
   let selectedIcon = null;
+  let currentSvgContent = '';
 
   // Fetch and render icons
   fetch('/icons')
@@ -25,14 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderIcons(iconsToRender) {
     iconGrid.innerHTML = '';
     iconsToRender.forEach(icon => {
-      const item = document.createElement('div');
-      item.className = 'icon-item';
-      item.dataset.icon = icon;
-      item.innerHTML = `
-        <img src="/icons-32px/${icon}" alt="${icon}">
-        <span>${icon.replace('.svg', '')}</span>
+      const card = document.createElement('div');
+      card.className = 'icon-card';
+      card.dataset.icon = icon;
+      card.innerHTML = `
+        <div class="icon-item">
+          <img src="/icons-32px/${icon}" alt="${icon}">
+        </div>
+        <span class="icon-name">${icon.replace('.svg', '')}</span>
       `;
-      iconGrid.appendChild(item);
+      iconGrid.appendChild(card);
     });
   }
 
@@ -45,13 +49,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Open sidebar
   iconGrid.addEventListener('click', (e) => {
-    const iconItem = e.target.closest('.icon-item');
-    if (iconItem) {
-      selectedIcon = iconItem.dataset.icon;
+    const iconCard = e.target.closest('.icon-card');
+    if (iconCard) {
+      // Manage selection state in the grid
+      const currentSelected = iconGrid.querySelector('.selected');
+      if (currentSelected) {
+        currentSelected.classList.remove('selected');
+      }
+      iconCard.querySelector('.icon-item').classList.add('selected');
+
+      selectedIcon = iconCard.dataset.icon;
       sidebarIconName.textContent = selectedIcon;
-      sidebarIconPreview.src = `/icons-32px/${selectedIcon}`;
       sidebar.classList.add('open');
       resultContainer.innerHTML = '';
+
+      // Reset color to default
+      colorInput.value = '#000000';
+      
+      // Fetch and display SVG for live preview
+      fetch(`/icons-32px/${selectedIcon}`)
+        .then(response => response.text())
+        .then(svgText => {
+            currentSvgContent = svgText;
+            updatePreviewColor(colorInput.value)
+        })
+
     }
   });
 
@@ -59,14 +81,31 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeSidebar() {
     sidebar.classList.remove('open');
     selectedIcon = null;
+
+    const currentSelected = iconGrid.querySelector('.selected');
+    if (currentSelected) {
+      currentSelected.classList.remove('selected');
+    }
   }
   closeSidebarBtn.addEventListener('click', closeSidebar);
 
   document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && !e.target.closest('.icon-item')) {
-      closeSidebar();
+    if (!sidebar.contains(e.target) && !e.target.closest('.icon-card')) {
+        closeSidebar();
     }
   });
+
+  // Update preview color on input
+  colorInput.addEventListener('input', () => {
+    updatePreviewColor(colorInput.value);
+  })
+
+  function updatePreviewColor(color){
+      if(currentSvgContent){
+          const coloredSvg = currentSvgContent.replace(/fill="(black|#000|#000000)"/g, `fill="${color}"`);
+          sidebarIconPreview.innerHTML = coloredSvg;
+      }
+  }
 
   // Handle size preset selection
   sizePresetsContainer.addEventListener('click', (e) => {
@@ -99,9 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContainer.innerHTML = `<p style="color: red;">Invalid size. Must be between 1 and 2048.</p>`;
         return;
     }
+
+    const color = colorInput.value;
+
     resultContainer.innerHTML = 'Converting...';
 
-    fetch(`/convert?icon=${selectedIcon}&size=${size}`)
+    fetch(`/convert?icon=${selectedIcon}&size=${size}&color=${encodeURIComponent(color)}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Conversion failed');

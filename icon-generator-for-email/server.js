@@ -25,6 +25,7 @@ app.get('/icons', async (req, res) => {
 app.get('/convert', async (req, res) => {
   const icon = req.query.icon;
   const size = parseInt(req.query.size, 10);
+  const color = req.query.color || '#000000';
 
   if (!icon) {
     return res.status(400).send('Icon parameter is required');
@@ -43,12 +44,31 @@ app.get('/convert', async (req, res) => {
   try {
     const pngBuffer = await sharp(inputPath)
       .resize(size, size)
+      .composite([
+        {
+          input: {
+            create: {
+              width: size,
+              height: size,
+              channels: 4,
+              background: color,
+            },
+          },
+          blend: 'atop',
+        },
+      ])
       .png()
       .toBuffer();
 
     res.set('Content-Type', 'image/png');
     res.send(pngBuffer);
   } catch (error) {
+    console.error('--- SVG Conversion Error ---');
+    console.error('Icon:', icon);
+    console.error('Size:', size);
+    console.error('Color:', color);
+    console.error('Sharp Error:', error);
+    console.error('--------------------------');
     res.status(500).send('Error converting icon');
   }
 });
