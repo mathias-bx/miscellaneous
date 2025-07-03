@@ -7,20 +7,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Icon Library</h1>
-      <div class="search-wrapper">
-        <input type="search" id="search-input" placeholder="Search icons...">
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <div id="icon-grid" class="container">
-      <!-- Icons will be populated by JavaScript -->
-    </div>
-  </main>
+  <div id="page-wrapper">
+    <header>
+      <div class="container">
+        <h1>Icon Library</h1>
+        <div class="search-wrapper">
+          <input type="search" id="search-input" placeholder="Search icons...">
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="icon-grid" class="container">
+        <!-- Icons will be populated by JavaScript -->
+      </div>
+    </main>
+  </div>
 
   <aside id="conversion-sidebar" class="sidebar">
     <div class="sidebar-content">
@@ -44,6 +47,10 @@
           <label>Color:</label>
           <div id="color-swatches" class="color-swatches">
             <!-- Color swatches will be populated by JavaScript -->
+          </div>
+          <label>Gradients:</label>
+          <div id="gradient-swatches" class="gradient-swatches">
+            <!-- Gradient swatches will be populated by JavaScript -->
           </div>
           <button id="convert-btn">Download PNG</button>
         </div>

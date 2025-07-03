@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const pageWrapper = document.getElementById('page-wrapper');
   const iconGrid = document.getElementById('icon-grid');
   const searchInput = document.getElementById('search-input');
   const sidebar = document.getElementById('conversion-sidebar');
@@ -8,24 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const sizePresetsContainer = document.getElementById('size-presets');
   const customSizeInput = document.getElementById('size-input');
   const colorSwatchesContainer = document.getElementById('color-swatches');
+  const gradientSwatchesContainer = document.getElementById('gradient-swatches');
   const convertBtn = document.getElementById('convert-btn');
   const resultContainer = document.getElementById('result-container');
 
   let icons = [];
   let colors = [];
+  let gradients = [];
   let selectedIcon = null;
-  let selectedColor = '#111827';
+  let selectedFill = { type: 'color', value: '#111827' };
   let currentSvgContent = '';
 
   // Fetch initial data
   Promise.all([
     fetch('/icons').then(res => res.json()),
-    fetch('/colors.json').then(res => res.json())
-  ]).then(([iconData, colorData]) => {
+    fetch('/colors.json').then(res => res.json()),
+    fetch('/gradients').then(res => res.json())
+  ]).then(([iconData, colorData, gradientData]) => {
     icons = iconData;
     colors = colorData;
+    gradients = gradientData;
     renderIcons(icons);
     renderColorSwatches(colors);
+    renderGradientSwatches(gradients);
   });
 
   // Render icons in the grid
@@ -54,10 +60,23 @@ document.addEventListener('DOMContentLoaded', () => {
       swatch.dataset.hex = color.hex;
       swatch.style.backgroundColor = color.hex;
       swatch.title = color.name;
-      if (color.hex === selectedColor) {
+      if (color.hex === selectedFill.value && selectedFill.type === 'color') {
         swatch.classList.add('selected');
       }
       colorSwatchesContainer.appendChild(swatch);
+    });
+  }
+
+  // Render gradient swatches
+  function renderGradientSwatches(gradientsToRender) {
+    gradientSwatchesContainer.innerHTML = '';
+    gradientsToRender.forEach(gradient => {
+      const swatch = document.createElement('div');
+      swatch.className = 'gradient-swatch';
+      swatch.dataset.gradient = gradient;
+      swatch.style.backgroundImage = `url(/gradients/${gradient})`;
+      swatch.title = gradient.replace('.svg', '').replace(/-/g, ' ');
+      gradientSwatchesContainer.appendChild(swatch);
     });
   }
 
@@ -81,13 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedIcon = iconCard.dataset.icon;
       sidebarIconName.textContent = selectedIcon;
       sidebar.classList.add('open');
+      pageWrapper.classList.add('sidebar-open');
       resultContainer.innerHTML = '';
 
       fetch(`/icons-32px/${selectedIcon}`)
         .then(response => response.text())
         .then(svgText => {
           currentSvgContent = svgText;
-          updatePreviewColor(selectedColor);
+          updatePreview();
         });
     }
   });
@@ -95,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Close sidebar
   function closeSidebar() {
     sidebar.classList.remove('open');
+    pageWrapper.classList.remove('sidebar-open');
     const currentSelected = iconGrid.querySelector('.selected');
     if (currentSelected) {
       currentSelected.classList.remove('selected');
@@ -111,20 +132,43 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle color selection
   colorSwatchesContainer.addEventListener('click', (e) => {
     if (e.target.matches('.color-swatch')) {
-      const currentSelected = colorSwatchesContainer.querySelector('.selected');
-      if (currentSelected) {
-        currentSelected.classList.remove('selected');
-      }
+      document.querySelector('.color-swatch.selected')?.classList.remove('selected');
+      document.querySelector('.gradient-swatch.selected')?.classList.remove('selected');
       e.target.classList.add('selected');
-      selectedColor = e.target.dataset.hex;
-      updatePreviewColor(selectedColor);
+      selectedFill = { type: 'color', value: e.target.dataset.hex };
+      updatePreview();
     }
   });
 
-  function updatePreviewColor(color) {
-    if (currentSvgContent) {
-      const coloredSvg = currentSvgContent.replace(/fill="(black|#000|#000000)"/g, `fill="${color}"`);
-      sidebarIconPreview.innerHTML = coloredSvg;
+  // Handle gradient selection
+  gradientSwatchesContainer.addEventListener('click', (e) => {
+    if (e.target.matches('.gradient-swatch')) {
+        document.querySelector('.color-swatch.selected')?.classList.remove('selected');
+        document.querySelector('.gradient-swatch.selected')?.classList.remove('selected');
+        e.target.classList.add('selected');
+        selectedFill = { type: 'gradient', value: e.target.dataset.gradient };
+        updatePreview();
+    }
+  });
+
+  function updatePreview() {
+    if (!currentSvgContent) return;
+
+    if (selectedFill.type === 'color') {
+        const coloredSvg = currentSvgContent.replace(/fill="(black|#000|#000000)"/g, `fill="${selectedFill.value}"`);
+        sidebarIconPreview.innerHTML = coloredSvg;
+    } else {
+        const patternId = 'gradient-preview';
+        const defs = `
+          <defs>
+            <pattern id="${patternId}" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox" width="1" height="1">
+              <image href="/gradients/${selectedFill.value}" x="0" y="0" width="1" height="1" preserveAspectRatio="none" />
+            </pattern>
+          </defs>
+        `;
+        let finalSvg = currentSvgContent.replace(/<svg(.*?)>/, `<svg$1>${defs}`);
+        finalSvg = finalSvg.replace(/fill="(black|#000|#000000)"/g, `fill="url(#${patternId})"`);
+        sidebarIconPreview.innerHTML = finalSvg;
     }
   }
 
@@ -162,7 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resultContainer.innerHTML = 'Converting...';
 
-    fetch(`/convert?icon=${selectedIcon}&size=${size}&color=${encodeURIComponent(selectedColor)}`)
+    const queryParams = new URLSearchParams({
+        icon: selectedIcon,
+        size: size,
+        fillType: selectedFill.type,
+        fillValue: selectedFill.value
+    });
+
+    fetch(`/convert?${queryParams.toString()}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Conversion failed');
